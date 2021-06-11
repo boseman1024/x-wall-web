@@ -32,6 +32,10 @@
               :text="item.text"
               :styleText="item.styleText"
               :config="item.config"
+              :period="item.period"
+              :realComp="item.realComp"
+              :sourceType="item.sourceType"
+              :sql="item.sql"
             ></component>
           </template>
         </div>
@@ -51,6 +55,7 @@
 </template>
 
 <script>
+import DynamicWrapper from "../components/DynamicWrapper";
 import TextLabel from "../components/TextLabel";
 import VueDragResize from "vue-drag-resize";
 import Toolbar from "../components/Toolbar";
@@ -60,6 +65,7 @@ export default {
     Toolbar,
     VueDragResize,
     TextLabel,
+    DynamicWrapper,
   },
   data() {
     return {
@@ -104,13 +110,17 @@ export default {
       this.layout[this.selectedIndex].z--;
     },
     appendIntoGrid(instance, params) {
-      this.layout[this.selectedIndex].reverse = params.reverse;
-      this.layout[this.selectedIndex].title = params.text;
-      this.layout[this.selectedIndex].text = params.text;
-      this.layout[this.selectedIndex].styleText = params.styleText;
-      this.layout[this.selectedIndex].config = params.config;
+      this.layout[this.selectedIndex].reverse = params.reverse; //边框反转
+      this.layout[this.selectedIndex].title = params.text; //文本
+      this.layout[this.selectedIndex].text = params.text; //文本
+      this.layout[this.selectedIndex].styleText = params.styleText; //css样式
+      this.layout[this.selectedIndex].period = params.period; //sql、api请求方式定时周期
+      this.layout[this.selectedIndex].sourceType = params.sourceType; //json、sql、api请求方式
+      this.layout[this.selectedIndex].sql = params.sql; //sql内容
+      this.layout[this.selectedIndex].realComp = params.realComp; //动态组件真实组件
+      this.layout[this.selectedIndex].config = params.config; //图表配置
       this.layout[this.selectedIndex].component = instance;
-      console.log(this.layout[this.selectedIndex]);
+      console.warn("layout", this.layout[this.selectedIndex]);
     },
     onResizing(e, index) {
       if (this.$refs["component_" + index]) {

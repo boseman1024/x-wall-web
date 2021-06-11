@@ -103,11 +103,11 @@ export default {
       dbLoading: false,
       dbConnection: false,
       database: {
-        name: "",
-        host: "",
-        port: "",
-        username: "",
-        password: "",
+        name: "hbhzz2021_test",
+        host: "10.100.3.220",
+        port: "3306",
+        username: "sa",
+        password: "111111",
       },
     };
   },
