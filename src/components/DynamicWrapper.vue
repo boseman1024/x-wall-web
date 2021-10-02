@@ -34,7 +34,7 @@ export default {
         if (this.realComp === "DvPercentPond") {
           chartUtil.initPercentPond(this.config_);
         }
-        console.log(this.config_ )
+        console.log(this.config_);
         this.config_ = { ...this.config_ };
       });
     },
